@@ -64,7 +64,7 @@ const initDB = async () => {
         // 3. CREATE SURVEYS TABLE (With all correct columns)
         await pool.query(`
             CREATE TABLE IF NOT EXISTS surveys (
-                id SERIAL PRIMARY KEY,
+                id VARCHAR(255) PRIMARY KEY,
                 district VARCHAR(255),
                 block VARCHAR(255),
                 route_name VARCHAR(255),
