@@ -47,7 +47,9 @@ const initDB = async () => {
                 id SERIAL PRIMARY KEY,
                 username VARCHAR(255) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
-                role VARCHAR(50) DEFAULT 'user'
+                role VARCHAR(50) DEFAULT 'user',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                mobile VARCHAR(50)
             );
         `);
 
@@ -80,11 +82,12 @@ const initDB = async () => {
                 survey_date TIMESTAMP,
                 photos JSONB,
                 videos JSONB,
-                gopro JSONB,
                 selfie_path TEXT,
                 remarks TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                gopro JSONB,
+                submitter_id VARCHAR(255)
             );
         `);
         console.log("✅ Database is FIXED and READY!");
