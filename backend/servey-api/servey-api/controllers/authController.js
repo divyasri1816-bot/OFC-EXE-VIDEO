@@ -35,8 +35,8 @@ export const registerUser = async (req, res) => {
 
         // ✅ FIX 2 & 3: Match column count (5 columns) with placeholder count ($1 to $5)
         const newUser = await db.query(
-            "INSERT INTO users (id, username, password, role, mobile) VALUES ($1, $2, $3, $4, $5) RETURNING id, username, role, mobile",
-            [userId, username, hashedPassword, role || 'user', mobile]
+            "INSERT INTO users ( username, password, role, mobile) VALUES ( $1, $2, $3, $4) RETURNING id, username, role, mobile",
+            [ username, hashedPassword, role || 'user', mobile]
         );
 
         res.json({ success: true, user: newUser.rows[0] });
