@@ -298,7 +298,7 @@ const pool = new Pool({
 
 const createSurveysTable = `
 CREATE TABLE IF NOT EXISTS surveys (
-    id VARCHAR(255) PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id SERIAL PRIMARY KEY,
     district TEXT,
     block TEXT,
     route_name TEXT,
@@ -312,7 +312,7 @@ CREATE TABLE IF NOT EXISTS surveys (
     surveyor_name TEXT,
     surveyor_mobile TEXT,
     generated_filename TEXT,
-    submitted_by UUID REFERENCES users(id),
+    submitted_by TEXT,
     survey_date TEXT,
     photos TEXT,
     videos TEXT,
@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS surveys (
 
 const createUsersTable = `
 CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY DEFAULT uuid_generate_v4(),,
+    id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) DEFAULT 'user',
