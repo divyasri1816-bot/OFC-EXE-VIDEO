@@ -55,7 +55,7 @@ export const loginUser = async (req, res) => {
         const { username, password } = req.body;
 
         // *** FIX: Use db.query ***
-        const result = await db.query("SELECT id, username, role, password, created_at FROM users WHERE username = $1", [username]);
+        const result = await db.query("SELECT id, username, role, password, created_at FROM public.users WHERE username = $1", [username]);
 
         if (result.rows.length === 0) {
             return res.status(400).json({ error: "User not found" });
